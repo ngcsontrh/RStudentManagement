@@ -3,14 +3,22 @@ using System.Windows.Forms;
 
 namespace RStudentManagement.Core
 {
-    internal class MainFormBuilder
+    internal interface IMainFormBuilder
+    {
+        IMainFormBuilder WithMainForm(Func<Form> mainFormFactory);
+        IMainFormBuilder OnStart(Action onStart);
+        IMainFormBuilder OnExit(Action onExit);
+        Form Build();
+    }
+
+    internal class MainFormBuilder : IMainFormBuilder
     {
         private Form? _form;
 
         private Action? _onStart;
         private Action? _onExit;
 
-        public MainFormBuilder WithMainForm(Func<Form> mainFormFactory)
+        public IMainFormBuilder WithMainForm(Func<Form> mainFormFactory)
         {
             if (mainFormFactory == null)
                 throw new ArgumentNullException(nameof(mainFormFactory));
@@ -20,13 +28,13 @@ namespace RStudentManagement.Core
             return this;
         }
 
-        public MainFormBuilder OnStart(Action onStart)
+        public IMainFormBuilder OnStart(Action onStart)
         {
             _onStart = onStart ?? throw new ArgumentNullException(nameof(onStart));
             return this;
         }
 
-        public MainFormBuilder OnExit(Action onExit)
+        public IMainFormBuilder OnExit(Action onExit)
         {
             _onExit = onExit ?? throw new ArgumentNullException(nameof(onExit));
             return this;

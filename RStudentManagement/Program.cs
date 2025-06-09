@@ -1,6 +1,5 @@
-using Core;
-using Core.Logger;
 using RStudentManagement.Core;
+using RStudentManagement.Core.Logger;
 
 namespace RStudentManagement
 {
@@ -21,21 +20,20 @@ namespace RStudentManagement
                 ConsoleManager.EnableConsole();
             }
 
-            var mainForm = new MainFormBuilder()
-                .WithMainForm(() => new LoginForm())
-                .OnStart(() => 
+            IMainFormBuilder mainFormBuilder = new MainFormBuilder()
+                .WithMainForm(() => new StudentForm())
+                .OnStart(() =>
                 {
                     LoggerFactory.Instance.GetLogger(AppConfig.LoggerType)
                         .LogInfo("Application started");
                 })
-                .OnExit(() => 
+                .OnExit(() =>
                 {
                     LoggerFactory.Instance.GetLogger(AppConfig.LoggerType)
                         .LogInfo("Application exited");
-                })
-                .Build();
+                });
 
-            Application.Run(mainForm);
+            Application.Run(mainFormBuilder.Build());
         }
     }
 }

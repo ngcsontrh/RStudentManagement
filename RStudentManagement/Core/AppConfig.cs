@@ -1,4 +1,4 @@
-﻿using Core.Logger;
+﻿using RStudentManagement.Core.Logger;
 using System;
 using System.Collections.Generic;
 using System.Linq;

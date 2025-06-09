@@ -55,17 +55,19 @@
             panel1.Controls.Add(label1);
             panel1.Dock = DockStyle.Left;
             panel1.Location = new Point(0, 0);
+            panel1.Margin = new Padding(3, 2, 3, 2);
             panel1.Name = "panel1";
-            panel1.Size = new Size(442, 560);
+            panel1.Size = new Size(387, 420);
             panel1.TabIndex = 0;
             // 
             // panel3
             // 
             panel3.Controls.Add(label3);
             panel3.Controls.Add(register_button);
-            panel3.Location = new Point(0, 441);
+            panel3.Location = new Point(0, 331);
+            panel3.Margin = new Padding(3, 2, 3, 2);
             panel3.Name = "panel3";
-            panel3.Size = new Size(442, 67);
+            panel3.Size = new Size(387, 50);
             panel3.TabIndex = 3;
             // 
             // label3
@@ -73,17 +75,18 @@
             label3.AutoSize = true;
             label3.Font = new Font("Segoe UI Semibold", 16.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
             label3.ForeColor = SystemColors.Window;
-            label3.Location = new Point(12, 13);
+            label3.Location = new Point(10, 10);
             label3.Name = "label3";
-            label3.Size = new Size(259, 38);
+            label3.Size = new Size(203, 30);
             label3.TabIndex = 3;
             label3.Text = "Chưa có tài khoản?";
             // 
             // register_button
             // 
-            register_button.Location = new Point(277, 18);
+            register_button.Location = new Point(242, 14);
+            register_button.Margin = new Padding(3, 2, 3, 2);
             register_button.Name = "register_button";
-            register_button.Size = new Size(143, 38);
+            register_button.Size = new Size(125, 28);
             register_button.TabIndex = 2;
             register_button.Text = "Tạo tài khoản";
             register_button.UseVisualStyleBackColor = true;
@@ -94,9 +97,9 @@
             label2.AutoSize = true;
             label2.Font = new Font("Segoe UI", 16.2F, FontStyle.Bold | FontStyle.Italic, GraphicsUnit.Point, 0);
             label2.ForeColor = SystemColors.Window;
-            label2.Location = new Point(21, 195);
+            label2.Location = new Point(18, 146);
             label2.Name = "label2";
-            label2.Size = new Size(395, 38);
+            label2.Size = new Size(306, 30);
             label2.TabIndex = 1;
             label2.Text = "Hệ Thống Quản Lý Sinh Viên";
             // 
@@ -105,9 +108,9 @@
             label1.AutoSize = true;
             label1.Font = new Font("Segoe UI", 18F, FontStyle.Bold, GraphicsUnit.Point, 0);
             label1.ForeColor = SystemColors.Window;
-            label1.Location = new Point(43, 117);
+            label1.Location = new Point(38, 88);
             label1.Name = "label1";
-            label1.Size = new Size(352, 41);
+            label1.Size = new Size(283, 32);
             label1.TabIndex = 0;
             label1.Text = "R Student Management";
             // 
@@ -117,65 +120,74 @@
             panel2.Controls.Add(groupBox2);
             panel2.Controls.Add(groupBox1);
             panel2.Dock = DockStyle.Fill;
-            panel2.Location = new Point(442, 0);
+            panel2.Location = new Point(387, 0);
+            panel2.Margin = new Padding(3, 2, 3, 2);
             panel2.Name = "panel2";
-            panel2.Size = new Size(504, 560);
+            panel2.Size = new Size(441, 420);
             panel2.TabIndex = 1;
             // 
             // login_button
             // 
             login_button.BackColor = Color.MediumSeaGreen;
             login_button.ForeColor = SystemColors.Window;
-            login_button.Location = new Point(202, 388);
+            login_button.Location = new Point(177, 291);
+            login_button.Margin = new Padding(3, 2, 3, 2);
             login_button.Name = "login_button";
-            login_button.Size = new Size(127, 38);
+            login_button.Size = new Size(111, 28);
             login_button.TabIndex = 2;
             login_button.Text = "Đăng nhập";
             login_button.UseVisualStyleBackColor = false;
-            login_button.Click += this.login_button_Click;
+            login_button.Click += login_button_Click;
             // 
             // groupBox2
             // 
             groupBox2.Controls.Add(password_textBox);
-            groupBox2.Location = new Point(53, 306);
+            groupBox2.Location = new Point(46, 230);
+            groupBox2.Margin = new Padding(3, 2, 3, 2);
             groupBox2.Name = "groupBox2";
-            groupBox2.Size = new Size(426, 63);
+            groupBox2.Padding = new Padding(3, 2, 3, 2);
+            groupBox2.Size = new Size(373, 47);
             groupBox2.TabIndex = 1;
             groupBox2.TabStop = false;
             groupBox2.Text = "Mật khẩu";
             // 
             // password_textBox
             // 
-            password_textBox.Location = new Point(12, 26);
+            password_textBox.Location = new Point(10, 20);
+            password_textBox.Margin = new Padding(3, 2, 3, 2);
             password_textBox.Name = "password_textBox";
-            password_textBox.Size = new Size(408, 27);
+            password_textBox.Size = new Size(358, 23);
             password_textBox.TabIndex = 0;
             // 
             // groupBox1
             // 
             groupBox1.Controls.Add(username_textBox);
-            groupBox1.Location = new Point(53, 220);
+            groupBox1.Location = new Point(46, 165);
+            groupBox1.Margin = new Padding(3, 2, 3, 2);
             groupBox1.Name = "groupBox1";
-            groupBox1.Size = new Size(426, 63);
+            groupBox1.Padding = new Padding(3, 2, 3, 2);
+            groupBox1.Size = new Size(373, 47);
             groupBox1.TabIndex = 0;
             groupBox1.TabStop = false;
             groupBox1.Text = "Tên tài khoản";
             // 
             // username_textBox
             // 
-            username_textBox.Location = new Point(12, 26);
+            username_textBox.Location = new Point(10, 20);
+            username_textBox.Margin = new Padding(3, 2, 3, 2);
             username_textBox.Name = "username_textBox";
-            username_textBox.Size = new Size(408, 27);
+            username_textBox.Size = new Size(358, 23);
             username_textBox.TabIndex = 0;
             // 
             // LoginForm
             // 
-            AutoScaleDimensions = new SizeF(8F, 20F);
+            AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(946, 560);
+            ClientSize = new Size(828, 420);
             Controls.Add(panel2);
             Controls.Add(panel1);
             FormBorderStyle = FormBorderStyle.FixedSingle;
+            Margin = new Padding(3, 2, 3, 2);
             MaximizeBox = false;
             Name = "LoginForm";
             StartPosition = FormStartPosition.CenterScreen;

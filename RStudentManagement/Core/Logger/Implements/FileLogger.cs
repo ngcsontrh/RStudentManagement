@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Core.Logger.Implements
+namespace RStudentManagement.Core.Logger.Implements
 {
     public sealed class FileLogger : ILogger
     {

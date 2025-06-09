@@ -1,6 +1,6 @@
 ﻿using System.Runtime.InteropServices;
 
-namespace Core
+namespace RStudentManagement.Core
 {
     public static class ConsoleManager
     {

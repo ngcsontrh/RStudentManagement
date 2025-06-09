@@ -37,6 +37,8 @@ namespace RStudentManagement
             else
             {
                 MessageBox.Show($"Welcome {username}!", "Login Successful", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                StudentForm studentForm = new StudentForm();
+                studentForm.ShowDialog();                
                 this.Close();
             }
         }
