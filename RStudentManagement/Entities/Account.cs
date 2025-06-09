@@ -6,20 +6,19 @@ using System.Threading.Tasks;
 
 namespace RStudentManagement.Entities
 {
-    public class AppIdentityUser
+    public class Account
     {
         public Guid Id { get; set; } = Guid.NewGuid();
         public string UserName { get; set; } = null!;
         public string Email { get; set; } = null!;
         public string PasswordHash { get; set; } = null!;
-        public string? Status { get; set; } = UserStatus.WaitingForApproval.ToString();
+        public string? Status { get; set; } = AccountStatus.Active.ToString();
         public DateTime CreatedAt { get; set; } = DateTime.UtcNow;
     }
 
-    public enum UserStatus
+    public enum AccountStatus
     {
         Active,
         Inactive,
-        WaitingForApproval,
     }
 }

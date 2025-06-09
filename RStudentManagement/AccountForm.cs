@@ -14,7 +14,7 @@ namespace RStudentManagement
 {
     public partial class AccountForm : Form
     {
-        private List<AppIdentityUser> appIdentityUsers = new List<AppIdentityUser>();
+        private List<Account> appIdentityUsers = new List<Account>();
 
         public AccountForm()
         {
