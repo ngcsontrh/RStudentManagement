@@ -16,4 +16,11 @@ namespace RStudentManagement.Entities
         public DateTime Timestamp { get; set; } = DateTime.UtcNow;
         public Guid? UserId { get; set; }
     }
+
+    public enum AuditActionType
+    {
+        Create,
+        Update,
+        Delete,
+    }
 }
