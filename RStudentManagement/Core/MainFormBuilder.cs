@@ -7,6 +7,7 @@ namespace RStudentManagement.Core
     {
         IMainFormBuilder WithMainForm(Func<Form> mainFormFactory);
         IMainFormBuilder OnStart(Action onStart);
+        IMainFormBuilder OnLoad(Action onLoad);
         IMainFormBuilder OnExit(Action onExit);
         Form Build();
     }
@@ -16,6 +17,7 @@ namespace RStudentManagement.Core
         private Form? _form;
 
         private Action? _onStart;
+        private Action? _onLoad;
         private Action? _onExit;
 
         public IMainFormBuilder WithMainForm(Func<Form> mainFormFactory)
@@ -34,6 +36,12 @@ namespace RStudentManagement.Core
             return this;
         }
 
+        public IMainFormBuilder OnLoad(Action onLoad)
+        {
+            _onLoad = onLoad ?? throw new ArgumentNullException(nameof(onLoad));
+            return this;
+        }
+
         public IMainFormBuilder OnExit(Action onExit)
         {
             _onExit = onExit ?? throw new ArgumentNullException(nameof(onExit));
@@ -48,10 +56,13 @@ namespace RStudentManagement.Core
             if (_onStart != null)
                 _form.Load += (s, e) => _onStart();
 
+            if (_onLoad != null)
+                _form.Shown += (s, e) => _onLoad();
+
             if (_onExit != null)
                 _form.FormClosed += (s, e) => _onExit();
 
             return _form;
-        }
+        }        
     }
 }

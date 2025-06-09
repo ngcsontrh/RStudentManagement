@@ -20,17 +20,38 @@ namespace RStudentManagement
                 ConsoleManager.EnableConsole();
             }
 
+            LoggerFactory.Instance
+                .GetLogger(AppConfig.LoggerType)
+                .LogInfo("Application starting...");
+
             IMainFormBuilder mainFormBuilder = new MainFormBuilder()
-                .WithMainForm(() => new StudentForm())
+                .WithMainForm(() => new LoginForm())
                 .OnStart(() =>
                 {
-                    LoggerFactory.Instance.GetLogger(AppConfig.LoggerType)
-                        .LogInfo("Application started");
+                    LoggerFactory.Instance
+                        .GetLogger(AppConfig.LoggerType)
+                        .LogInfo("Application started.");                    
+                })
+                .OnLoad(() =>
+                {
+                    if (!NetworkHelper.Instance.IsInternetAvailable())
+                    {                        
+                        LoggerFactory.Instance
+                            .GetLogger(AppConfig.LoggerType)
+                            .LogError("No internet connection detected.");
+
+                        MessageBox.Show(
+                            "No internet connection detected. Please check your network settings.", 
+                            "Network Error", 
+                            MessageBoxButtons.OK, 
+                            MessageBoxIcon.Error);
+                    }
                 })
                 .OnExit(() =>
                 {
-                    LoggerFactory.Instance.GetLogger(AppConfig.LoggerType)
-                        .LogInfo("Application exited");
+                    LoggerFactory.Instance
+                        .GetLogger(AppConfig.LoggerType)
+                        .LogInfo("Application exited.");
                 });
 
             Application.Run(mainFormBuilder.Build());

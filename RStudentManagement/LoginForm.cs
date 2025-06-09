@@ -1,4 +1,6 @@
-﻿using System;
+﻿using RStudentManagement.Core;
+using RStudentManagement.Core.Logger;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -12,9 +14,11 @@ namespace RStudentManagement
 {
     public partial class LoginForm : Form
     {
+        private readonly ILogger _logger;
         public LoginForm()
         {
             InitializeComponent();
+            _logger = LoggerFactory.Instance.GetLogger(AppConfig.LoggerType);
         }
 
         private void register_button_Click(object sender, EventArgs e)
@@ -26,21 +30,27 @@ namespace RStudentManagement
 
         private void login_button_Click(object sender, EventArgs e)
         {
-            // Here you would typically validate the username and password
-            // For now, we will just show a message box
-            string username = username_textBox.Text;
-            string password = password_textBox.Text;
-            if (string.IsNullOrEmpty(username) || string.IsNullOrEmpty(password))
+            try
             {
-                MessageBox.Show("Please enter both username and password.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                string username = username_textBox.Text;
+                string password = password_textBox.Text;
+                if (string.IsNullOrEmpty(username) || string.IsNullOrEmpty(password))
+                {
+                    MessageBox.Show("Please enter both username and password.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+                else
+                {
+                    _logger.LogInfo($"User {username} logged in successfully.");
+                    AccountForm accountForm = new AccountForm();
+                    accountForm.ShowDialog();
+                    this.Close();
+                }
             }
-            else
+            catch (Exception ex)
             {
-                MessageBox.Show($"Welcome {username}!", "Login Successful", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                StudentForm studentForm = new StudentForm();
-                studentForm.ShowDialog();                
-                this.Close();
-            }
+                _logger.LogError("Login failed", ex);
+                MessageBox.Show("An error occurred while trying to log in. Please try again.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }            
         }
     }
 }
