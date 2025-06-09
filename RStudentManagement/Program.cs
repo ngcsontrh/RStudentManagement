@@ -1,5 +1,6 @@
 using Core;
 using Core.Logger;
+using RStudentManagement.Core;
 
 namespace RStudentManagement
 {
@@ -20,7 +21,7 @@ namespace RStudentManagement
                 ConsoleManager.EnableConsole();
             }
 
-            var mainForm = new AppBuilder()
+            var mainForm = new MainFormBuilder()
                 .WithMainForm(() => new LoginForm())
                 .OnStart(() => 
                 {

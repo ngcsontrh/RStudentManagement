@@ -1,16 +1,16 @@
 ﻿using System;
 using System.Windows.Forms;
 
-namespace RStudentManagement
+namespace RStudentManagement.Core
 {
-    internal class AppBuilder
+    internal class MainFormBuilder
     {
         private Form? _form;
 
         private Action? _onStart;
         private Action? _onExit;
 
-        public AppBuilder WithMainForm(Func<Form> mainFormFactory)
+        public MainFormBuilder WithMainForm(Func<Form> mainFormFactory)
         {
             if (mainFormFactory == null)
                 throw new ArgumentNullException(nameof(mainFormFactory));
@@ -20,13 +20,13 @@ namespace RStudentManagement
             return this;
         }
 
-        public AppBuilder OnStart(Action onStart)
+        public MainFormBuilder OnStart(Action onStart)
         {
             _onStart = onStart ?? throw new ArgumentNullException(nameof(onStart));
             return this;
         }
 
-        public AppBuilder OnExit(Action onExit)
+        public MainFormBuilder OnExit(Action onExit)
         {
             _onExit = onExit ?? throw new ArgumentNullException(nameof(onExit));
             return this;
