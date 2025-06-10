@@ -34,7 +34,7 @@ namespace RStudentManagement
                 })
                 .OnLoad(() =>
                 {
-                    if (!NetworkHelper.Instance.IsInternetAvailable())
+                    if (!NetworkManager.Instance.IsInternetAvailable())
                     {                        
                         LoggerFactory.Instance
                             .GetLogger(AppConfig.LoggerType)

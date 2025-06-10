@@ -6,11 +6,11 @@ using System.Threading.Tasks;
 
 namespace RStudentManagement.Core
 {
-    internal class PasswordHelper
+    internal class PasswordManager
     {
-        private PasswordHelper() { }
+        private PasswordManager() { }
 
-        public static PasswordHelper Instance { get; } = new PasswordHelper();
+        public static PasswordManager Instance { get; } = new PasswordManager();
 
         public string HashPassword(string password)
         {

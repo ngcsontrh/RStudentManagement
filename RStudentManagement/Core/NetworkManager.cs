@@ -8,16 +8,16 @@ using System.Threading.Tasks;
 
 namespace RStudentManagement.Core
 {
-    internal class NetworkHelper
+    internal class NetworkManager
     {
         private readonly ILogger _logger;
 
-        private NetworkHelper()
+        private NetworkManager()
         {
             _logger = LoggerFactory.Instance.GetLogger(AppConfig.LoggerType);
         }
 
-        public static NetworkHelper Instance { get; } = new NetworkHelper();
+        public static NetworkManager Instance { get; } = new NetworkManager();
 
         public bool IsInternetAvailable()
         {

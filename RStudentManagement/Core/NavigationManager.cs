@@ -9,9 +9,7 @@ namespace RStudentManagement.Core
     public enum SidebarItem
     {
         Personal,
-        Account,
-        Student,
-        Email
+        Student
     }
 
     internal class NavigationManager
@@ -25,7 +23,6 @@ namespace RStudentManagement.Core
             Form? newForm = item switch
             {
                 SidebarItem.Personal => new AccountForm(),
-                SidebarItem.Account => new AccountForm(),
                 SidebarItem.Student => new StudentForm(),
                 _ => null
             };
