@@ -1,5 +1,6 @@
 using RStudentManagement.Core;
 using RStudentManagement.Core.Logger;
+using System;
 
 namespace RStudentManagement
 {
@@ -53,6 +54,24 @@ namespace RStudentManagement
                         .GetLogger(AppConfig.LoggerType)
                         .LogInfo("Application exited.");
                 });
+
+            // Khởi tạo DatabaseManager
+            var databaseManager = new DatabaseManager(AppConfig.DbConnectionString);
+
+            // Kiểm tra kết nối đến database
+            if (databaseManager.TestConnection())
+            {
+                Console.WriteLine("Database connection successful.");
+                // Gọi phương thức CreateTables để tạo các bảng
+                databaseManager.CreateTables();
+                databaseManager.InsertSampleStudents();
+                databaseManager.InsertSampleAccounts();
+            }
+            else
+            {
+                Console.WriteLine("Database connection failed.");
+                return;
+            }
 
             Application.Run(mainFormBuilder.Build());
         }

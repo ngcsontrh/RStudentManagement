@@ -44,7 +44,7 @@
             groupBox3 = new GroupBox();
             textBox3 = new TextBox();
             groupBox2 = new GroupBox();
-            textBox2 = new TextBox();
+            dateTimePicker1 = new DateTimePicker();
             button1 = new Button();
             groupBox1 = new GroupBox();
             textBox1 = new TextBox();
@@ -214,7 +214,7 @@
             // groupBox2
             // 
             groupBox2.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left;
-            groupBox2.Controls.Add(textBox2);
+            groupBox2.Controls.Add(dateTimePicker1);
             groupBox2.Location = new Point(6, 71);
             groupBox2.Name = "groupBox2";
             groupBox2.Size = new Size(213, 61);
@@ -222,13 +222,13 @@
             groupBox2.TabStop = false;
             groupBox2.Text = "Ngày sinh";
             // 
-            // textBox2
+            // dateTimePicker1
             // 
-            textBox2.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left;
-            textBox2.Location = new Point(6, 21);
-            textBox2.Name = "textBox2";
-            textBox2.Size = new Size(201, 23);
-            textBox2.TabIndex = 0;
+            dateTimePicker1.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left;
+            dateTimePicker1.Location = new Point(6, 21);
+            dateTimePicker1.Name = "dateTimePicker1";
+            dateTimePicker1.Size = new Size(201, 23);
+            dateTimePicker1.TabIndex = 0;
             // 
             // button1
             // 
@@ -239,6 +239,7 @@
             button1.TabIndex = 6;
             button1.Text = "Thêm mới";
             button1.UseVisualStyleBackColor = true;
+            button1.Click += button1_Click;
             // 
             // groupBox1
             // 
@@ -314,7 +315,7 @@
         private GroupBox groupBox3;
         private TextBox textBox3;
         private GroupBox groupBox2;
-        private TextBox textBox2;
+        private DateTimePicker dateTimePicker1;
         private GroupBox groupBox8;
         private TextBox textBox8;
         private GroupBox groupBox7;

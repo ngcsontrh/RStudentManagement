@@ -10,6 +10,6 @@ namespace RStudentManagement.Core
     internal static class AppConfig
     {
         public static LoggerType LoggerType { get; set; } = LoggerType.Console;
-        public static string DbConnectionString { get; set; } = "Server=localhost;Database=RStudentManagement;User Id=sa;Password=your_password;TrustServerCertificate=True;";
+        public static string DbConnectionString { get; set; } = "Server=DESKTOP-7JMQ3VD\\KHOA;Database=RStudentManagement;Trusted_Connection=True;TrustServerCertificate=True;";
     }
 }

@@ -158,6 +158,7 @@
             password_textBox.Name = "password_textBox";
             password_textBox.Size = new Size(358, 23);
             password_textBox.TabIndex = 0;
+            
             // 
             // groupBox1
             // 
