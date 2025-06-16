@@ -26,7 +26,7 @@ namespace RStudentManagement
             _studentLogService = new StudentLogService(_databaseManager);
             sidebarControl1.SidebarItemClicked += SidebarControl1_SidebarItemClicked;
             dataGridView1.CellContentClick += dataGridView1_CellContentClick;
-            button1.Click += button1_Click;
+           
         }
 
         private void SidebarControl1_SidebarItemClicked(object? sender, SidebarItem e)
@@ -43,6 +43,15 @@ namespace RStudentManagement
         {
             var studentsList = await _studentLogService.GetAllStudentsAsync();
             students = studentsList.ToList();
+
+            // Xóa các cột action cũ nếu có
+            if (dataGridView1.Columns.Contains("Edit"))
+                dataGridView1.Columns.Remove("Edit");
+            if (dataGridView1.Columns.Contains("Delete"))
+                dataGridView1.Columns.Remove("Delete");
+
+            // Đặt lại DataSource về null trước khi gán mới
+            dataGridView1.DataSource = null;
             dataGridView1.DataSource = students;
             AddActionColumns();
 
@@ -124,20 +133,27 @@ namespace RStudentManagement
 
         private async void button1_Click(object sender, EventArgs e)
         {
-            
             try
             {
+                // Kiểm tra mã sinh viên đã tồn tại chưa
+                var studentsList = await _studentLogService.GetAllStudentsAsync();
+                if (studentsList.Any(s => s.Code.Trim().Equals(textBox1.Text.Trim(), StringComparison.OrdinalIgnoreCase)))
+                {
+                    MessageBox.Show("Mã sinh viên đã tồn tại, vui lòng nhập mã khác!", "Trùng mã", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }
+
                 var student = new Student
                 {
                     Id = Guid.NewGuid(),
-                    Code = textBox1.Text,
-                    FirstName = textBox3.Text,
-                    LastName = textBox5.Text,
-                    DateOfBirth = DateTime.TryParse(dateTimePicker1.Text, out var dob) ? dob : DateTime.Now,
-                    PlaceOfBirth = textBox4.Text,
-                    Gender = textBox6.Text,
-                    PhoneNumber = textBox7.Text,
-                    Email = textBox8.Text,
+                    Code = textBox1.Text.Trim(),
+                    FirstName = textBox3.Text.Trim(),
+                    LastName = textBox5.Text.Trim(),
+                    DateOfBirth = dateTimePicker1.Value,
+                    PlaceOfBirth = textBox4.Text.Trim(),
+                    Gender = textBox6.Text.Trim(),
+                    PhoneNumber = textBox7.Text.Trim(),
+                    Email = textBox8.Text.Trim(),
                     CreatedAt = DateTime.UtcNow
                 };
 
@@ -146,6 +162,15 @@ namespace RStudentManagement
                 {
                     MessageBox.Show("Thêm sinh viên thành công!");
                     await LoadStudents();
+
+                    textBox1.Text = "";
+                    textBox3.Text = "";
+                    textBox5.Text = "";
+                    dateTimePicker1.Value = DateTime.Now;
+                    textBox4.Text = "";
+                    textBox6.Text = "";
+                    textBox7.Text = "";
+                    textBox8.Text = "";
                 }
                 else
                 {

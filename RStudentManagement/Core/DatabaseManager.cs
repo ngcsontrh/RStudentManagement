@@ -194,5 +194,17 @@ namespace RStudentManagement.Core
             ";
             ExecuteNonQuery(query);
         }
+
+        public void InsertSampleAccount()
+        {
+            string query = @"
+                IF NOT EXISTS (SELECT * FROM Accounts WHERE UserName = 'testuser')
+                BEGIN
+                    INSERT INTO Accounts (UserName, Email, PasswordHash, Status)
+                    VALUES ('testuser', 'testuser@email.com', 'testpasswordhash', 'Active')
+                END
+            ";
+            ExecuteNonQuery(query);
+        }
     }
 } 
