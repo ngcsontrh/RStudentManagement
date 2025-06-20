@@ -9,8 +9,17 @@ using System.Threading.Tasks;
 
 namespace RStudentManagement.Strategies
 {
+    /// <summary>
+    /// Chiến lược xuất dữ liệu sinh viên sang file Excel
+    /// Triển khai giao diện IExportStrategy bằng cách sử dụng thư viện EPPlus để tạo file Excel
+    /// </summary>
     public class ExcelExportStrategy : IExportStrategy
     {
+        /// <summary>
+        /// Xuất danh sách sinh viên ra file Excel với định dạng được tùy chỉnh
+        /// </summary>
+        /// <param name="students">Danh sách sinh viên cần xuất</param>
+        /// <param name="filePath">Đường dẫn đến file Excel xuất</param>
         public void Export(IEnumerable<Student> students, string filePath)
         {
             ExcelPackage.LicenseContext = LicenseContext.NonCommercial;

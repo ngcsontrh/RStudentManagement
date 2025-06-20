@@ -12,10 +12,12 @@ namespace RStudentManagement.UIProvider.Factory
         {
             return new LightThemeButton();
         }
+
         public ITextBox CreateTextBox()
         {
             return new LightThemeTextBox();
         }
+
         public ILabel CreateLabel()
         {
             return new LightThemeLabel();
@@ -30,7 +32,6 @@ namespace RStudentManagement.UIProvider.Factory
             return new Button { BackColor = Color.LightGray, ForeColor = Color.Black, Font = font };
         }
     }
-
     public class LightThemeTextBox : ITextBox
     {
         public Control GetControl()
@@ -39,7 +40,6 @@ namespace RStudentManagement.UIProvider.Factory
             return new TextBox { BackColor = Color.White, ForeColor = Color.Black, Font = font };
         }
     }
-
     public class LightThemeLabel : ILabel
     {
         public Control GetControl()

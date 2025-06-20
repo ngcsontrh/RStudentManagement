@@ -12,10 +12,12 @@ namespace RStudentManagement.UIProvider.Factory
         {
             return new DarkThemeButton();
         }
+
         public ITextBox CreateTextBox()
         {
             return new DarkThemeTextBox();
         }
+
         public ILabel CreateLabel()
         {
             return new DarkThemeLabel();

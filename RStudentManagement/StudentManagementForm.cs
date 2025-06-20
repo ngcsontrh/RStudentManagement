@@ -188,7 +188,7 @@ namespace RStudentManagement
             {
                 Name = "Edit",
                 HeaderText = "Action",
-                Text = "Edit",
+                Text = "✏️",
                 UseColumnTextForButtonValue = true,
                 Width = 60
             };
@@ -319,7 +319,12 @@ namespace RStudentManagement
 
         private void BtnUpdate_Click(object sender, EventArgs e)
         {
-            if (_selectedStudent == null || !ValidateInput()) return;
+            if (_selectedStudent == null)
+            {
+                MessageBox.Show("Please select a student to delete.", "No Selection", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return;
+            }
+            if (!ValidateInput()) return;
             var updatedStudent = _selectedStudent.Clone();
             UpdateStudentFromForm(updatedStudent);
             _ = UpdateStudentAsync(updatedStudent);
@@ -403,6 +408,11 @@ namespace RStudentManagement
                 MessageBox.Show("Student Code is required.", "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return false;
             }
+            if (txtCode.Text.Length < 5 && txtCode.Text.Length > 10)
+            {
+                MessageBox.Show("Student Code must be between 5 and 10 characters.", "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return false;
+            }
             if (string.IsNullOrWhiteSpace(txtFullName.Text))
             {
                 MessageBox.Show("Full Name is required.", "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -411,6 +421,11 @@ namespace RStudentManagement
             if (string.IsNullOrWhiteSpace(txtEmail.Text))
             {
                 MessageBox.Show("Email is required.", "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return false;
+            }
+            if (!txtEmail.Text.Contains("@") || !txtEmail.Text.Contains("."))
+            {
+                MessageBox.Show("Invalid email format.", "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return false;
             }
             if (string.IsNullOrWhiteSpace(txtAddress.Text))

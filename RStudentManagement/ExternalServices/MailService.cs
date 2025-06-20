@@ -16,10 +16,10 @@ namespace RStudentManagement.ExternalServices
 
         public MailService()
         {
-            _appMailAddress = "";
-            _appMailPassword = "";
-            _smtpServer = "smtp.gmail.com";
-            _smtpPort = 587;
+            _appMailAddress = AppConfig.MailAddress;
+            _appMailPassword = AppConfig.MailPassword;
+            _smtpServer = AppConfig.SmtpServer;
+            _smtpPort = AppConfig.SmtpPort;
         }
 
         public async Task SendEmailAsync(string to, string subject, string body)

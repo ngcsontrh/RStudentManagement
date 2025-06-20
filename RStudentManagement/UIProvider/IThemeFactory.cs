@@ -22,7 +22,6 @@ namespace RStudentManagement.UIProvider
     {
         Control GetControl();
     }
-
     public interface ILabel
     {
         Control GetControl();

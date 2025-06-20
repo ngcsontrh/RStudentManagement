@@ -15,7 +15,7 @@ namespace RStudentManagement.Data
 
         private DatabaseManager()
         {
-            _connectionString = "Server=localhost;Database=RStudentManagement;User Id=sa;Password=password;TrustServerCertificate=True;";
+            _connectionString = AppConfig.ConnectionString;
             _options = new DbContextOptionsBuilder<AppDbContext>()
                 .UseSqlServer(_connectionString)
                 .Options;
