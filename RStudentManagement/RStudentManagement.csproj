@@ -11,16 +11,20 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="BCrypt.Net-Next" Version="4.0.3" />
+    <PackageReference Include="EPPlus" Version="7.7.2" />
+    <PackageReference Include="iTextSharp" Version="5.5.13.4" />
+    <PackageReference Include="MailKit" Version="4.12.1" />
+    <PackageReference Include="Mapster" Version="7.4.0" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Sqlite" Version="8.0.17" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="8.0.17" />
   </ItemGroup>
 
   <ItemGroup>
-    <Compile Update="StudentForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Update="RegisterForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
+    <EditorConfigFiles Remove="E:\Projects\RStudentManagement\RStudentManagement\.editorconfig" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="E:\Projects\RStudentManagement\RStudentManagement\.editorconfig" />
   </ItemGroup>
 
 </Project>

@@ -9,16 +9,8 @@ namespace RStudentManagement.Entities
     public class EventLog
     {
         public Guid Id { get; set; } = Guid.NewGuid();
-        public string EventType { get; set; } = string.Empty;
-        public string Description { get; set; } = string.Empty;
-        public DateTime Timestamp { get; set; } = DateTime.UtcNow;
-        public Guid? UserId { get; set; }
-    }
-
-    public enum EventType
-    {
-        Login,
-        Logout,
-        Register,
-    }
+        public string EventType { get; set; } = null!;
+        public string Description { get; set; } = null!;
+        public DateTime CreatedAt { get; set; } = DateTime.UtcNow;
+    }    
 }

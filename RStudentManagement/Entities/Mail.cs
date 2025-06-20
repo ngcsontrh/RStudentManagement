@@ -12,14 +12,6 @@ namespace RStudentManagement.Entities
         public string Email { get; set; } = null!;
         public string Title { get; set; } = null!;
         public string Body { get; set; } = null!;
-        public string Status { get; set; } = MailStatus.Sending.ToString();
         public DateTime CreatedAt { get; set; } = DateTime.UtcNow;
-    }
-
-    public enum MailStatus
-    {
-        Sending,
-        Success,
-        Failed
-    }
+    }    
 }
