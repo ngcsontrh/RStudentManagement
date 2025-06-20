@@ -1,6 +1,4 @@
-﻿// Optimized and fixed version of StudentManagementForm
-using RStudentManagement.Adapters;
-using RStudentManagement.Data.Repositories;
+﻿using RStudentManagement.Adapters;
 using RStudentManagement.Entities;
 using RStudentManagement.EntityBuilder;
 using RStudentManagement.Facades;
@@ -43,7 +41,6 @@ namespace RStudentManagement
         private Button btnUndo;
         private Button btnRedo;
         private Button btnExportCsv;
-        private Button btnExportPdf;
         private Button btnExportExcel;
 
 
@@ -292,7 +289,6 @@ namespace RStudentManagement
         {
             if (e.RowIndex < 0 || e.ColumnIndex < 0) return;
 
-            // Kiểm tra nếu cột là "Edit"
             if (dgvStudents.Columns[e.ColumnIndex].Name == "Edit")
             {
                 var idStr = dgvStudents.Rows[e.RowIndex].Cells["ID"].Value?.ToString();
@@ -301,7 +297,7 @@ namespace RStudentManagement
                     var found = _students.FirstOrDefault(s => s.Id == id);
                     if (found != null)
                     {
-                        _selectedStudent = found.Copy();
+                        _selectedStudent = found.Clone();
                         DisplayStudentDetails(_selectedStudent);
                     }
                 }
@@ -324,7 +320,7 @@ namespace RStudentManagement
         private void BtnUpdate_Click(object sender, EventArgs e)
         {
             if (_selectedStudent == null || !ValidateInput()) return;
-            var updatedStudent = _selectedStudent.Copy();
+            var updatedStudent = _selectedStudent.Clone();
             UpdateStudentFromForm(updatedStudent);
             _ = UpdateStudentAsync(updatedStudent);
         }
@@ -420,6 +416,11 @@ namespace RStudentManagement
             if (string.IsNullOrWhiteSpace(txtAddress.Text))
             {
                 MessageBox.Show("Address is required.", "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return false;
+            }
+            if (cbClass.SelectedValue == null)
+            {
+                MessageBox.Show("Please select a class.", "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return false;
             }
             return true;

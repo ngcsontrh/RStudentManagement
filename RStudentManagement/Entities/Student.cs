@@ -1,4 +1,5 @@
-﻿using System;
+﻿using RStudentManagement.Prototype;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -6,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace RStudentManagement.Entities
 {
-    public class Student
+    public class Student : ICloneable<Student>
     {
         public Guid Id { get; set; } = Guid.NewGuid();
         public string Code { get; set; } = null!;
@@ -17,9 +18,9 @@ namespace RStudentManagement.Entities
         public string Class { get; set; } = null!;
         public DateTime CreatedAt { get; set; } = DateTime.UtcNow;
 
-        public Student Copy()
+        public Student Clone()
         {
-            return (Student)MemberwiseClone();
+            return (Student)this.MemberwiseClone();
         }
     }    
 }
