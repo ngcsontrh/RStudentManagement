@@ -30,7 +30,8 @@ namespace RStudentManagement.Mementos
         {
             _undoStack.Push(memento);
             _redoStack.Clear(); // clear redo stack on new operation
-        }        /// <summary>
+        }        
+        /// <summary>
         /// Thực hiện hoàn tác (undo) bằng cách lấy trạng thái trước đó từ ngăn xếp undo
         /// </summary>
         /// <returns>Đối tượng Memento chứa trạng thái trước đó, hoặc null nếu không có trạng thái trước</returns>
